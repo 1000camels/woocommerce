@@ -180,3 +180,27 @@ As many WordPress extensions aren't WooCommerce related, WC will only display th
 ### New order querying APIs
 
 HPOS, through `WC_Order_Query`, introduces new query types that allow for more complex order queries involving dates, metadata and order fields. Head over to [HPOS: new order querying APIs](https://developer.woocommerce.com/docs/hpos-order-querying-apis/) for details and examples.
+
+
+## Additional Hooks have changed for Admin Orders List [*](https://stackoverflow.com/a/77366541)
+
+### Bulk Actions
+
+The filter `bulk_actions-edit-shop_order` has been replaced by `bulk_actions-woocommerce_page_wc-orders`, and the handler filter `handle_bulk_actions-edit-shop_order` has been replaced by `handle_bulk_actions-woocommerce_page_wc-orders`.
+
+### Edit existing columns or add custom columns to admin Orders list:
+
+`manage_woocommerce_page_wc-orders_columns` replaces the hook
+`manage_edit-shop_order_columns`
+`manage_woocommerce_page_wc-orders_custom_column` replaces the hook:
+`manage_shop_order_posts_custom_column`
+
+### To make custom columns sortable in admin Order list use:
+
+`woocommerce_shop_order_list_table_sortable_columns` replacing the hook
+`manage_edit-shop_order_sortable_columns`
+
+### To make custom order metadata searchable in admin Order list use:
+
+`woocommerce_order_table_search_query_meta_keys` replacing the hook
+`woocommerce_shop_order_search_fields`
